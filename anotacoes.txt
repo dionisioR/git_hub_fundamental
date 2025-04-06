@@ -1,0 +1,311 @@
+LISTA AS CONFIGURAÇÕES GLOBAIS DE SEU GIT NA MÁQUINA LOCAL
+-----------------------------------------------------------------------
+    git config --global --list
+
+
+
+CONFIGURANDO O NOME DO USUARIO
+-----------------------------------------------------------------------
+    git config --global user.name "nome do usuario"
+
+
+
+CONFIGURANDO O EMAIL DO USUARIO
+-----------------------------------------------------------------------
+git config --global user.email " email do usuario"
+
+
+
+
+=======================================================================
+FLUXO MAIS COMUM DE FUNCIONAMENTO DO GIT
+=======================================================================
+
+O que é a "staging area"?
+-----------------------------------------------------------------------
+A "staging area" (ou área de preparação) é uma área intermediária entre o
+seu código modificado e o repositório Git.
+
+Quando você faz alterações nos seus arquivos, essas alterações 'ainda não 
+estão versionadas'. Para isso, você precisa:
+
+1. 'Adicionar' essas mudanças à 'staging area' (git add);
+2. 'Confirmar' essas mudanças com um commit (git commit).
+
+- A 'staging area' serve para você preparar o que exatamente vai ser salvo no próximo commit.
+
+
+-----------------------------------------------------------------------
+
+
+Comandos do Git com explicações e exemplos
+
+-----------------------------------------------------------------------
+
+"git init"
+Função: Inicializa um repositório Git vazio no diretório atual.
+    Ou seja, transforma uma pasta comum em um repositório Git, criando a
+    estrutura de pastas e arquivos que o Git usa para controlar 
+    versões (inclusive a staging).
+
+
+Exemplo:
+    Você tem uma pasta do seu projeto chamada meu-projeto.
+
+    cd meu-projeto
+    git init
+
+Depois disso:
+    O Git começa a monitorar seu projeto.
+    Será criada uma pasta oculta chamada .git (com todo o histórico, configurações, etc.).
+    Agora você pode usar git add, git commit, e os outros comandos normalmente.
+
+
+-----------------------------------------------------------------------
+
+"git status"
+
+Função: Mostra o estado atual do seu repositório.
+
+Diz:
+    Quais arquivos foram modificados.
+    Quais estão na staging area.
+    Quais não estão sendo rastreados.
+    Em qual branch você está.
+
+Exemplo:
+
+    "git status"
+
+Saída típica:
+    On branch main
+    Changes not staged for commit:
+        (use "git add <file>..." to update what will be committed)
+    
+            modified:   index.html
+
+    Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+
+            novo-arquivo.js
+
+Esse exemplo mostra que:
+    index.html foi alterado, mas ainda não foi adicionado (git add).
+    novo-arquivo.js foi criado, mas ainda não está sendo rastreado.
+
+
+-----------------------------------------------------------------------
+
+git log
+
+Função: Mostra o histórico de commits no repositório.
+
+Exemplo:
+    git log
+
+Saída típica:
+    commit 4f3a9cd7e2f949c64a943bfed22cf7e2670f90c3
+    Author: João da Silva <joao@email.com>
+    Date:   Sat Apr 5 10:00:00 2025 -0300
+
+        Corrige layout da página inicial
+
+    commit b6bcd921e12e3c17f6cddc3a1235678acfdb1234
+    Author: João da Silva <joao@email.com>
+    Date:   Fri Apr 4 15:45:21 2025 -0300
+
+        Adiciona página de contato
+
+    Mostra:
+        O hash único de cada commit.
+        Nome do autor.
+        Data e hora.
+        Mensagem do commit.
+
+-----------------------------------------------------------------------
+
+
+"git add"
+Função: Adiciona arquivos à staging area.
+
+Exemplo:
+    git add index.html
+    Adiciona o arquivo 'index.html' à staging area.
+
+    git add .
+    Adiciona todas as alterações feitas no projeto.
+
+
+-----------------------------------------------------------------------
+
+"git commit"
+Função: Registra as alterações que estão na staging area no histórico do 
+repositório (cria um "checkpoint").
+
+Exemplo:
+    git commit -m "Adiciona página de login"
+    O '-m' indica a mensagem do commit, que deve descrever o que foi feito.
+
+
+-----------------------------------------------------------------------
+
+'git push
+Função: Envia os commits locais para o repositório remoto (por exemplo, no GitHub).
+
+Exemplo:
+    git push origin main
+    Envia os commits do seu branch 'main' para o repositório remoto chamado 'origin'.
+
+
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+
+git fetch
+Função: Baixa as alterações do repositório remoto sem aplicar no seu código local.
+
+Exemplo:
+    git fetch origin
+    Traz as atualizações do repositório remoto, mas você ainda precisa fazer um
+    'merge' ou 'pull' para aplicá-las.
+
+
+-----------------------------------------------------------------------
+
+'git checkout'
+Função: Muda de branch ou recupera uma versão anterior de um arquivo.
+
+Exemplo:
+    git checkout -b nova-feature
+    Cria e troca para uma nova branch chamada 'nova-feature'
+
+    git checkout main
+    Muda para o branch 'main'.
+
+
+-----------------------------------------------------------------------
+
+git merge
+Função: Junta o conteúdo de um branch com outro.
+
+Exemplo:
+    Suponha que você está no branch 'main' e quer juntar o branch 'nova-feature':
+
+    git merge nova-feature
+    As alterações de 'nova-feature' serão combinadas ao branch 'main'.
+
+
+-----------------------------------------------------------------------
+'git pull'
+Função: Faz o mesmo que 'fetch + merge': 
+traz as alterações do repositório remoto e aplica no seu branch atual.
+
+Exemplo:
+    git pull origin main
+    Atualiza seu branch atual com as mudanças do branch 'main' do repositório remoto 'origin'.
+
+
+-----------------------------------------------------------------------
+'git clone'
+Função: Faz uma cópia completa de um repositório remoto para a sua máquina.
+
+Exemplo:
+    git clone https://github.com/seu-usuario/seu-projeto.git
+
+    Cria uma pasta com os arquivos do projeto e o histórico de commits.
+
+
+-----------------------------------------------------------------------
+
+git restore --staged <arquivo>
+
+Função: Remove o arquivo da staging area, mas mantém as alterações feitas 
+no arquivo no seu diretório de trabalho.
+
+Exemplo prático:
+    Você fez isso:
+        git add teste.txt
+
+    Aí decide que ainda não quer incluir o teste.txt no commit.
+    Então executa:
+        git restore --staged teste.txt
+
+Resultado:
+    teste.txt sai da staging area (não será incluído no próximo commit).
+    Mas o conteúdo alterado continua lá — as mudanças feitas não são perdidas.
+
+Fluxo visual:
+Modificou o arquivo
+       ↓
+git add teste.txt      ← coloca na staging
+       ↓
+git restore --staged teste.txt  ← tira da staging, mas mantém as mudanças
+
+
+
+Se você quiser descartar completamente as alterações feitas no arquivo 
+(voltando ao que estava no último commit), aí sim usaria:
+
+    git restore teste.txt
+
+Esse segundo apaga suas mudanças locais no arquivo!
+
+-----------------------------------------------------------------------
+
+git rm --cached <arquivo>
+
+Função: Remove o arquivo da staging area e do controle de versão, mas 
+mantém o arquivo no seu diretório local.
+
+Exemplo:
+    git rm --cached teste.txt
+
+Isso faz com que o Git pare de rastrear o teste.txt, mas não apaga ele da sua pasta.
+
+Situação típica de uso:
+    Você adicionou sem querer um arquivo que não deveria estar versionado 
+    (como arquivos .env, *.log, ou arquivos grandes). Então, você usa:
+
+    git rm --cached teste.txt
+
+Depois, se quiser garantir que o Git nunca mais rastreie esse tipo de arquivo, 
+adicione ele ao .gitignore:
+
+    echo "teste.txt" >> .gitignore
+
+
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+
+=======================================================================
+Exemplo 01
+=======================================================================
+- Crie sua pasta
+- Abra o terminal e navegue até a pasta
+- git init   [Inicie um novo repositório Git]
+- git status
+- Crie um arquivo
+- git add .  [ou 'git add nome_do_arquivo' - Adicione todos os arquivos da pasta ao stage]
+- git commit -m "Primeiro commit"  [Faça um commit com uma mensagem]
+- git log 
+
+=======================================================================
+- git status
+- crie um segundo arquivo
+- git add . 
+- git status
+- git restore --staged nome_do_arquivo  [Tire o arquivo da staging area]
+- git status
+
+======================================================================
+- crie um terceiro arquivo
+- git status
+- git add
+- git status
+- git rm --cached nome_do_arquivo  [Tire o arquivo da staging area, mas mantenha ele na pasta]
+- git status
