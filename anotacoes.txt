@@ -274,12 +274,30 @@ adicione ele ao .gitignore:
 
 
 -----------------------------------------------------------------------
-
+git commit -am "comentário"
+ - Alternativa aos comandos git add. e git commit
 -----------------------------------------------------------------------
 
+.gitignore
+
+Exemplo:
+    # Comentário
+    teste2.txt
+    teste.txt
+    config/
+    docs/documento3.xlsx
+
+
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
+BRANCH
 -----------------------------------------------------------------------
+git branch
+ - Exibe as branchs do projeto
+-----------------------------------------------------------------------
+git branch 'NomeDaBranch"
+- Cria uma nova branch
+
 -----------------------------------------------------------------------
 
 =======================================================================
@@ -309,3 +327,32 @@ Exemplo 01
 - git status
 - git rm --cached nome_do_arquivo  [Tire o arquivo da staging area, mas mantenha ele na pasta]
 - git status
+======================================================================
+- crie um outro arquivo txt [teste2.txt]
+- git status
+- git add .
+- git commit -m "***"
+- git status
+--- DELETE o arquivo 'teste2.txt'
+- git status  >>> Verifique que agora vai informar que o arquivo foi excluido
+- git add .
+- git status
+- git commit -m "***"
+======================================================================
+- criar um outro arquivo
+- git status
+- git add .
+- git commit -m "commit 2"
+- escreva uma informação no arquivo
+- git status
+- git add .
+--- removendo o arquivo do staged
+- git rm --cached nome_do_arquivo
+
+Obs.:
+- Para remover o arquivo do staged, git e da pasta
+- O arquivo deve estar sem conteúdo (Vazio)
+--- git rm nome_do_arquivo
+
+- RESTAURAR o arquivo exclúido antes de fazer o commit
+- git restore NomeDoARquivo
