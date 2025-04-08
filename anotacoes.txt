@@ -289,6 +289,37 @@ Exemplo:
 
 
 -----------------------------------------------------------------------
+ALTERAR ENTRE BRANCH
+- git switch nomeDaBranch
+-----------------------------------------------------------------------
+EXIBIR O CONTEÚDO DA BRANCH
+- git checkout nomeDaBranch
+-----------------------------------------------------------------------
+MERGE (JUNÇÃO) DAS BRANCHES
+- Você deve estar na branch de origem, em nosso exemplo a branch MASTER
+- git merge nomeDaBranch_queSeraPuchadoAsInformações
+-----------------------------------------------------------------------
+DELETAR BRANCH 
+- git branch -d nomeDaBranch
+-----------------------------------------------------------------------
+VER AS BRANCHS DE MANEIRA MAIS ORGANIZADA
+- git log --oneline
+-----------------------------------------------------------------------
+NAVEGAR ENTRE AS BRANCH
+- git checkout idDaBranch
+--- Vc será direcionado para o commit em questão e não verá mais o histório dos outros commits feitos depois deste commit
+- git checkout master 
+--- Vc será direcionado para a branch MASTER e verá o histório dos commits feitos
+- git checkout idDaBranch .
+--- Vc será direcionado para a branch e verá o histório dos commits feitos
+-----------------------------------------------------------------------
+PUSH
+- git push
+--- Depois do git add e git commit o GIT PUSH vai sincronizar os projeto local com o projet remoto e fará a atualização no repositório remoto.
+-----------------------------------------------------------------------
+PULL 
+- git pull
+--- Vai fazer o download dos arquivos do repositório remoto e atualizar o projeto local
 -----------------------------------------------------------------------
 BRANCH
 -----------------------------------------------------------------------
