@@ -1,3 +1,10 @@
+LINKS
+-----------------------------------------------------------------------
+https://git-scm.com/
+https://git-scm.com/doc
+https://git-scm.com/docs   <<<
+https://git-scm.com/book/en/v2
+
 LISTA AS CONFIGURAÇÕES GLOBAIS DE SEU GIT NA MÁQUINA LOCAL
 -----------------------------------------------------------------------
     git config --global --list
@@ -250,6 +257,11 @@ Se você quiser descartar completamente as alterações feitas no arquivo
 Esse segundo apaga suas mudanças locais no arquivo!
 
 -----------------------------------------------------------------------
+git restore --source=idDoCommit NomeDoARquivo
+git restore --source=a482c90 pag2.html
+
+- fará a restauração do arquivo em questão (somente do arquivo) para a versão desejada
+-----------------------------------------------------------------------
 
 git rm --cached <arquivo>
 
@@ -330,6 +342,8 @@ git branch 'NomeDaBranch"
 - Cria uma nova branch
 
 -----------------------------------------------------------------------
+DIFF - ver a diferença entre dois commits
+- git diff idDoCommit1 idDoCommit2
 
 =======================================================================
 Exemplo 01
